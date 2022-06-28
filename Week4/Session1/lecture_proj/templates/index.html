@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Home Page</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <h1>Welcome to Sal's First Flask Website!</h1>
+    <h2>Now logged into the {{region_code}} region!</h2>
+    <h3>Now teaching the following stacks</h3>
+    {% for stack in stacks %}
+        <p>{{stack}}</p>
+    {% endfor %}
+</body>
+</html>
