@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Review Dashboard</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='{{ url_for("static", filename="css/style.css")}}'>
+
+</head>
+<body>
+    <h1>Welcome {{user.first_name}} {{user.last_name}} to Review Dashboard</h1>
+    <h2>All Reviews in The Database</h2>
+    <table>
+        <thead>
+            <th>Movie Title</th>
+            <th>Rating</th>
+            <th>Reviewer</th>
+            <th>Actions</th>
+        </thead>
+        <tbody>
+            {% for review in reviews %}
+            <tr>
+                <td>{{review.title}}</td>
+                <td>{{review.rating}}</td>
+                <td>{{review.user.first_name}} {{review.user.last_name}}</td>
+                <td>
+                    <a href="/reviews/{{review.id}}">Show</a>
+                    <a href="/reviews/{{review.id}}/edit">Edit</a>
+                    <a href="/reviews/{{review.id}}/delete">Delete</a>
+
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <h2>Create a review!</h2>
+    <form action="/reviews/create" method="POST">
+        <input name="user_id" type="hidden" value="{{user.id}}">
+        <p>Title: <input name="title" type="text"></p>
+        <p>Review Content: <textarea name="content"></textarea>></p>
+        <p>Rating: <input name="rating" type="number"></p>
+        <p>Date Watched <input name="date_watched" type="date"></p>
+        <button type="submit">Create Review!</button>
+    </form>
+    <a href="/logout">Logout</a>
+</body>
+</html>

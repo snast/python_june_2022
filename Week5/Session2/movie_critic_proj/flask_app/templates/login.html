@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>User Dashboard</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='{{ url_for("static", filename="css/style.css")}}'>
+
+</head>
+<body>
+    <h1>Login</h1>
+    <h2>Create a user!</h2>
+    <form action="/login" method="POST">
+        <p>Email: <input name="email" type="email"></p>
+        <button type="submit">Login</button>
+    </form>
+</body>
+</html>
